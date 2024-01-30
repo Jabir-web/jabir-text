@@ -25,18 +25,18 @@
 include "../logics/conn.php";
 
 // queries
-$jan="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'January' AND bill_user = '{$_SESSION["id"]}'";
-$feb="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'February' AND bill_user = '{$_SESSION["id"]}'";
-$mar="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'March' AND bill_user = '{$_SESSION["id"]}'";
-$apr="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'April' AND bill_user = '{$_SESSION["id"]}'";
-$may="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'May' AND bill_user = '{$_SESSION["id"]}'";
-$jun="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'Jun' AND bill_user = '{$_SESSION["id"]}'";
-$jul="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'July' AND bill_user = '{$_SESSION["id"]}'";
-$aug="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'August' AND bill_user = '{$_SESSION["id"]}'";
-$sep="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'September' AND bill_user = '{$_SESSION["id"]}'";
-$oct="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'October' AND bill_user = '{$_SESSION["id"]}'";
-$nov="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'November' AND bill_user = '{$_SESSION["id"]}'";
-$dec="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'December' AND bill_user = '{$_SESSION["id"]}'";
+$jan="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'January' AND bill_user = '{$_SESSION["adminid"]}'";
+$feb="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'February' AND bill_user = '{$_SESSION["adminid"]}'";
+$mar="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'March' AND bill_user = '{$_SESSION["adminid"]}'";
+$apr="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'April' AND bill_user = '{$_SESSION["adminid"]}'";
+$may="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'May' AND bill_user = '{$_SESSION["adminid"]}'";
+$jun="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'Jun' AND bill_user = '{$_SESSION["adminid"]}'";
+$jul="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'July' AND bill_user = '{$_SESSION["adminid"]}'";
+$aug="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'August' AND bill_user = '{$_SESSION["adminid"]}'";
+$sep="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'September' AND bill_user = '{$_SESSION["adminid"]}'";
+$oct="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'October' AND bill_user = '{$_SESSION["adminid"]}'";
+$nov="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'November' AND bill_user = '{$_SESSION["adminid"]}'";
+$dec="SELECT SUM(bill_amount) FROM billing WHERE bill_month = 'December' AND bill_user = '{$_SESSION["adminid"]}'";
 
 
 $janquery=mysqli_query($connection,$jan);

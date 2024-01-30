@@ -268,10 +268,9 @@
  
           <?php
           
-          if($_SESSION['admin']==="admin@gmail.com") {
+          if(isset($_SESSION['id'])) {
 
-            ?>
-             <li class="nav-item nav-category">Admin</li>
+            echo'<li class="nav-item nav-category">Sub-Admin</li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#users" aria-expanded="false" aria-controls="form-elements">
                 <i class="menu-icon mdi mdi-card-text-outline"></i>
@@ -285,15 +284,26 @@
                   <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Search Services</a></li>
                 </ul>
               </div>
-            </li>
-
-            <?php
-            # code...
-          }
+            </li>';
+       }else if(isset($_SESSION['adminid'])) { 
+         
+           echo' <li class="nav-item nav-category">Admin</li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#admins" aria-expanded="false" aria-controls="form-elements">
+                <i class="menu-icon mdi mdi-card-text-outline"></i>
+                <span class="menu-title">Elixir Admin</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="admins">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"><a class="nav-link" href="adminsignup.php">Create Admin</a></li>
+                  <li class="nav-item"><a class="nav-link" href="totaladmin.php">Total Admin</a></li>
+                </ul>
+              </div>
+            </li>';
           
+          } 
           ?>
-       
-       
         </ul>
       </nav>
       <!-- partial -->

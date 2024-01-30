@@ -3,14 +3,14 @@
 include "conn.php";
 
 session_start();
-$useradminid=$_SESSION['id'];
+$useradminid=$_SESSION['adminid'];
 echo($useradminid);
 
 if (isset($_POST['serviceaddbtn'])) {
     $sname=$_POST['service_name'];
     $sfee=$_POST['service_fee'];
 
-    $sql="INSERT INTO `services` (`service_id`, `service_name`, `service_fee`, `service_date`) VALUES (NULL, '{$sname}', '{$sfee}', current_timestamp());";
+    $sql="INSERT INTO `services` (`service_id`, `service_name`, `service_fee`, `service_date`,`service_user`) VALUES (NULL, '{$sname}', '{$sfee}', current_timestamp(),'{$useradminid}');";
     
     if (mysqli_query($connection,$sql)) {
         # code...
@@ -43,7 +43,7 @@ if (isset($_POST['serviceaddbtn'])) {
     $packagefee=$_POST['pack_fee'];
     $packagedetail=$_POST['pack_detail'];
 
-    $sql="INSERT INTO `package` (`package_id`, `package_name`, `package_fee`, `package_detail`, `package_date`) VALUES (NULL, '{$packagename}', '{$packagefee}', '{$packagedetail}', current_timestamp());";
+    $sql="INSERT INTO `package` (`package_id`, `package_name`, `package_fee`, `package_detail`, `package_date`,`pack_user`) VALUES (NULL, '{$packagename}', '{$packagefee}', '{$packagedetail}', current_timestamp(),'{$useradminid}');";
     if (mysqli_query($connection,$sql)) {
         # code...
         header("Location: http://localhost/Elixir/admin/webpages/create_package.php?alert=packadded");
@@ -66,7 +66,7 @@ if (isset($_POST['serviceaddbtn'])) {
     $address=$_POST['staff_address'];
     $dir="../upload/staff/".$stafimg;
 
-    $sql="INSERT INTO `staff` (`staff_id`, `staff_img`, `staff_name`, `staff_pnumber`, `staff_cnic`, `staff_salary`, `staff_religion`, `staff_age`, `staff_timing`, `staff_address`, `staff_date`) VALUES (NULL, '{$stafimg}', '{$sname}', '{$spnumber}', '{$snic}', '{$salary}', '{$religion}', '{$age}', '{$timing}', '{$address}', current_timestamp());";
+    $sql="INSERT INTO `staff` (`staff_id`, `staff_img`, `staff_name`, `staff_pnumber`, `staff_cnic`, `staff_salary`, `staff_religion`, `staff_age`, `staff_timing`, `staff_address`, `staff_date`,`staff_user`) VALUES (NULL, '{$stafimg}', '{$sname}', '{$spnumber}', '{$snic}', '{$salary}', '{$religion}', '{$age}', '{$timing}', '{$address}', current_timestamp(),'{$useradminid}');";
     if (mysqli_query($connection,$sql)) {
         move_uploaded_file($staftmpimg,$dir);
         # code...

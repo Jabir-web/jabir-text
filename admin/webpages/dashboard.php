@@ -31,7 +31,7 @@ include "../logics/conn.php";
                         aria-controls="overview" aria-selected="true">Overview</a>
                     </li>
                     <?php
-                    if ($_SESSION['admin'] == "admin@gmail.com") {
+                    if (isset($_SESSION['admin'])){
                       echo ' <li class="nav-item">
                       <a class="nav-link"  href="totalusers.php" >Users</a>
                     </li>';
@@ -44,7 +44,7 @@ include "../logics/conn.php";
                     ?>
 
                     <?php
-                    if ($_SESSION['admin'] == "admin@gmail.com") {
+                    if (isset($_SESSION['admin'])){
                       echo ' <li class="nav-item">
                       <a class="nav-link"  href="https://www.whatsapp.com/" >Whatsapp</a>
                     </li>';
@@ -52,12 +52,9 @@ include "../logics/conn.php";
                       echo ' <li class="nav-item">
                       <a class="nav-link"  href="create_bill.php">Generate Bill</a>
                     </li>';
-
-                    }
-                    ?>
-
+                    }?>
                     <?php
-                    if ($_SESSION['admin'] == "admin@gmail.com") {
+                    if (isset($_SESSION['admin'])){
                       echo ' <li class="nav-item">
                       <a class="nav-link"  href="https://www.whatsapp.com/" >Sales</a>
                     </li>';
@@ -83,7 +80,7 @@ include "../logics/conn.php";
                       <div class="col-sm-12">
                         <div class="statistics-details d-flex align-items-center justify-content-between">
                           <?php
-                          if ($_SESSION['admin'] == "admin@gmail.com") {
+                          if ($_SESSION['admin']) {
 
                             $usersql = "SELECT * FROM users";
                             $userresult = mysqli_query($connection, $usersql);
@@ -109,7 +106,7 @@ include "../logics/conn.php";
 
                           <!-- sales  -->
                           <?php
-                          if ($_SESSION['admin'] == "admin@gmail.com") {
+                          if ($_SESSION['admin']) {
 
                             $billsql = "SELECT SUM(bill_amount) FROM billing WHERE bill_user=16";
                             $billresult = mysqli_query($connection, $billsql);
@@ -148,7 +145,7 @@ include "../logics/conn.php";
 
                            <!-- Expense -->
                            <?php
-                          if ($_SESSION['admin'] == "admin@gmail.com") {
+                          if ($_SESSION['admin']) {
 
                             $expsql = "SELECT SUM(expense_amount) FROM expenses WHERE exp_user=16";
                             $expresult = mysqli_query($connection, $expsql);
@@ -243,7 +240,7 @@ include "../logics/conn.php";
                                   <div class="d-sm-flex align-items-center mt-4 justify-content-between">
                                     <h2 class="me-2 fw-bold">PKR <span class="text-primary"> <!-- sales  -->
                                         <?php
-                                        if($_SESSION['admin'] == "admin@gmail.com"){
+                                        if(isset($_SESSION['admin'])){
 
                                           $billsql = "SELECT SUM(bill_amount) FROM billing WHERE bill_user=16";
                                           $billresult = mysqli_query($connection, $billsql);

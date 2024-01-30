@@ -11,13 +11,14 @@ require '../PHPMailer/src/SMTP.php';
 
 // Create a new PHPMailer instance
 $mail = new PHPMailer(true);
-
+session_start();
 if (isset($_POST['cmailbtn'])) {
+    $adminid=$_SESSION["id"];
     $rec=$_POST['email_rec'];
     $sub=$_POST['email_sub'];
     $msg=$_POST['email_msg'];
 
-    $sql="INSERT INTO `emails` (`email_id`, `email_rec`, `email_msg`, `email_date`, `email_user`, `email_status`) VALUES (NULL, '{$rec}', '{$msg}', current_timestamp(), '0', '0');";
+    $sql="INSERT INTO `emails` (`email_id`, `email_rec`, `email_msg`, `email_date`, `email_user`, `email_status`) VALUES (NULL, '{$rec}', '{$msg}', current_timestamp(), '{$adminid}', '0');";
     mysqli_query($connection,$sql);
         
   

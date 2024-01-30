@@ -56,48 +56,52 @@ include "head.php";
                       <!-- ALERT -->
                       <div class="row">
                         <div class="col-md-10">
-                          <h3>SignUp New User </h3>
+                          <h3>New Admin</h3>
                           <p class="mb-3">Let's Get Started</p>
                         </div>
                         <div class="col-md-2">
-                          <a href="totalusers.php" class="btn btn-block btn-primary text-light btn-lg">Total Users</a>
+                          <a href="totaladmin.php" class="btn btn-block btn-primary text-light btn-lg">Total Adimns</a>
                         </div>
                       </div>
 
-                      <form action="../logics/signuplogic.php" method="post" id="signupform " enctype="multipart/form-data">
+                      <form action="../logics/signuplogic.php" method="post" id="adminform " enctype="multipart/form-data">
                        
                        
 
                         <div>
                           <div id="img-preview"></div>
-                          <input type="file" id="choose-file" name="userfile"  />
-                          <label for="choose-file">Choose Image</label>
+                          <input type="file" id="choose-file" name="adminfile"  />
+                          <label for="choose-file">Choose Business Image</label>
                         </div>
 
                         <div class="form-group">
-                          <input type="text" name="user_fname" class="form-control form-control-lg"
-                            placeholder="Enter Fullname">
-
+                          <input type="text" name="admin_fname" class="form-control form-control-lg"
+                            placeholder="Enter Admin Fullname">
                         </div>
                         <div class="form-group">
-                          <input type="text" name="user_number" class="form-control form-control-lg"
-                            id="exampleInputEmail1" placeholder="Enter Phone Number">
+                          <input type="text" name="admin_bname" class="form-control form-control-lg"
+                            placeholder="Enter Admin Business Name">
                         </div>
                         <div class="form-group">
-                          <input type="email" name="user_email" class="form-control form-control-lg"
-                            id="exampleInputEmail1" placeholder="Enter Email">
+                          <input type="text" name="admin_number" class="form-control form-control-lg"
+                            id="exampleInputEmail1" placeholder="Enter Admin Phone Number">
+                        </div>
+                        <textarea name="admin_address" placeholder="Admin Business Description" class="border rounded p-3 baxa" rows="4" style="width:100%;"></textarea>
+                        <div class="form-group">
+                          <input type="text" name="admin_username" class="form-control form-control-lg"
+                            id="exampleInputEmail1" placeholder="Enter Admin Username">
                         </div>
                         <div class="form-group">
-                          <input type="password" name="user_password" class="form-control form-control-lg"
-                            id="exampleInputPassword1" placeholder="Enter Password">
+                          <input type="password" name="admin_password" class="form-control form-control-lg"
+                            id="exampleInputPassword1" placeholder="Enter Admin Password">
                         </div>
                         <div class="form-group">
-                          <input type="password" name="userconfirm_password" class="form-control form-control-lg"
-                            id="exampleInputPassword1" placeholder="Enter Confirm Password">
+                          <input type="password" name="adminconfirm_password" class="form-control form-control-lg"
+                            id="exampleInputPassword1" placeholder="Enter Admin Confirm Password">
                         </div>
                         <div class="mt-3">
                           <button class="btn btn-block btn-primary text-light btn-lg font-weight-medium auth-form-btn"
-                            type="submit" id="signupbtn" name="admin">SIGNUP</button>
+                            type="submit" name="adminbtn" id="adminbtn">Admin Signup</button>
                         </div>
 
 

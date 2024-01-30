@@ -54,7 +54,7 @@
                 
                 ?>
                 <div class="mt-3">
-                  <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                  <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" name="admin">SIGN IN</button>
                 </div>
               
                
