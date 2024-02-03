@@ -268,7 +268,7 @@
  
           <?php
           
-          if(isset($_SESSION['id'])) {
+          if(isset($_SESSION['status'])==0) {
 
             echo'<li class="nav-item nav-category">Sub-Admin</li>
             <li class="nav-item">
@@ -285,7 +285,7 @@
                 </ul>
               </div>
             </li>';
-       }else if(isset($_SESSION['adminid'])) { 
+       }else if(isset($_SESSION['status'])==1) { 
          
            echo' <li class="nav-item nav-category">Admin</li>
             <li class="nav-item">
@@ -300,9 +300,27 @@
                   <li class="nav-item"><a class="nav-link" href="totaladmin.php">Total Admin</a></li>
                 </ul>
               </div>
-            </li>';
+            </li>
+            <li class="nav-item nav-category">Sub-Admin</li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#users" aria-expanded="false" aria-controls="form-elements">
+                <i class="menu-icon mdi mdi-card-text-outline"></i>
+                <span class="menu-title">Elixir Users</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="users">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"><a class="nav-link" href="signup.php">Create Users</a></li>
+                  <li class="nav-item"><a class="nav-link" href="totalusers.php">Total Users</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Search Services</a></li>
+                </ul>
+              </div>
+            </li>
+            ';
           
-          } 
+          }else{
+            echo "Admin Not Set";
+          }
           ?>
         </ul>
       </nav>

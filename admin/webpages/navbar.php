@@ -2,7 +2,7 @@
 <?php
 
 session_start();
-if (!isset($_SESSION["admin"]) && $_SESSION["user"]=="") {
+if (!isset($_SESSION["adminid"]) && $_SESSION["user"]=="") {
   header("Location: http://localhost/Elixir/admin/index.php");
 }
 
@@ -160,7 +160,13 @@ if (!isset($_SESSION["admin"]) && $_SESSION["user"]=="") {
         </li>
         <li class="nav-item dropdown d-none d-lg-block user-dropdown">
           <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-            <img class="img-xs rounded-circle" src="../upload/users/<?php echo $_SESSION['image']?>" alt="Profile image"> </a>
+            <?php
+              if (isset($_SESSION['status'])) {
+                echo '<img class="img-xs rounded-circle" src="../upload/admins/'.$_SESSION["image"].'" alt="Profile image"> </a>';
+              }else{
+                echo '<img class="img-xs rounded-circle" src="../upload/users/'.$_SESSION["image"].'" alt="Profile image"> </a>';
+              }
+            ?>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
             <div class="dropdown-header text-center">
               <img class="img-sm rounded-circle" src="../upload/users/<?php echo $_SESSION['image']?>"  alt="Profile image">

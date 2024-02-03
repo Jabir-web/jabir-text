@@ -23,8 +23,8 @@ include "head.php";
             <div class="main-panel">
                 <?php
                 include("../logics/conn.php");
-
-                $queryservcie = "SELECT * FROM emails ORDER BY email_id DESC";
+                $useradminid=$_SESSION['adminid'];
+                $queryservcie = "SELECT * FROM emails WHERE email_user = '{$useradminid}'";
 
                 $run = mysqli_query($connection, $queryservcie);
                 $total = mysqli_num_rows($run);
@@ -104,7 +104,6 @@ include "head.php";
                                                                 <td class="py-1">
                                                                     <?php echo $row['email_id'] ?>
                                                                 </td>
-                                                 
                                                                 <td class="text-capitalize ">
                                                                     <?php echo $row['email_rec'] ?>
                                                                 </td>

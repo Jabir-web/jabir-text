@@ -14,11 +14,12 @@ if(isset($_POST['superadmin'])){
         $_SESSION["name"]=$row['admin_name'];
         $_SESSION["adminname"]=$row['admin_user'];
         $_SESSION['image']=$row['admin_pic'];
+        $_SESSION['status']=$row['admin_status'];
         header("Location: http://localhost/Elixir/admin/webpages/dashboard.php");
     }else{
         header("Location: http://localhost/Elixir/admin/superadmin/index.php?alert=usandpassnotset");
     }
-}elseif(isset($_POST['admin'])){
+}else if(isset($_POST['admin'])){
     $useremail=$_POST['useremail'];
     $password=md5($_POST['userpassword']);
     $query="SELECT * FROM users WHERE user_email='{$useremail}' AND user_password='{$password}'";
@@ -32,7 +33,6 @@ if(isset($_POST['superadmin'])){
         $_SESSION['image']=$row['user_pic'];
         header("Location: http://localhost/Elixir/admin/webpages/dashboard.php");
     }else{
-        header("Location: http://localhost/Elixir/admin/index.php?alert=usandpassnotset");
-    }
+        header("Location: http://localhost/Elixir/admin/index.php?alert=usandpassnotset");}
 }
 ?>

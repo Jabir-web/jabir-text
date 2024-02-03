@@ -13,12 +13,16 @@ include "../logics/conn.php";
     <!-- navbar  -->
     <?php include("navbar.php") ?>
     <!-- navbar  -->
-    <div class="container-fluid page-body-wrapper">
+    <div class="container-fluid page-body-wrapper pt-2">
       <!-- sidebar  -->
 
       <?php include("sidebar.php") ?>
       <!-- sidebar  -->
-
+      <?php
+      if ($_SESSION['adminid']) {
+        $adminid=$_SESSION['adminid'];
+      }
+      ?>
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
@@ -48,8 +52,8 @@ include "../logics/conn.php";
                       echo ' <li class="nav-item">
                       <a class="nav-link"  href="https://www.whatsapp.com/" >Whatsapp</a>
                     </li>';
-                    } else {
-                      echo ' <li class="nav-item">
+                    }else{
+                    echo '<li class="nav-item">
                       <a class="nav-link"  href="create_bill.php">Generate Bill</a>
                     </li>';
                     }?>
@@ -80,41 +84,33 @@ include "../logics/conn.php";
                       <div class="col-sm-12">
                         <div class="statistics-details d-flex align-items-center justify-content-between">
                           <?php
-                          if ($_SESSION['admin']) {
-
-                            $usersql = "SELECT * FROM users";
+                          if ($_SESSION['adminid']) {
+                            $usersql = "SELECT * FROM users WHERE user_admin='{$adminid}'";
                             $userresult = mysqli_query($connection, $usersql);
                             $userno = mysqli_num_rows($userresult);
-
-
                             echo ' <div>
                              <p class="statistics-title">Softwares Users</p> 
                              <h3 class="rate-percentage">' . $userno . '</h3>
                              </div>';
                           } else {
-                            $billsql = "SELECT * FROM billing WHERE bill_user = '{$_SESSION["id"]}'";
+                            $billsql = "SELECT * FROM billing WHERE bill_admin = '{$adminid}'";
                             $billresult = mysqli_query($connection, $billsql);
                             $billno = mysqli_num_rows($billresult);
                             echo ' <div>
                               <p class="statistics-title">Total bills</p> 
                               <h3 class="rate-percentage">' . $billno . '</h3>
                               </div>';
-
-
                           }
                           ?>
-
                           <!-- sales  -->
                           <?php
-                          if ($_SESSION['admin']) {
-
-                            $billsql = "SELECT SUM(bill_amount) FROM billing WHERE bill_user=16";
+                          if ($_SESSION['adminid']) {
+                            $billsql = "SELECT SUM(bill_amount) FROM billing WHERE bill_admin='{$adminid}'";
                             $billresult = mysqli_query($connection, $billsql);
                             $ans = mysqli_fetch_assoc($billresult);
                             $sales=$ans['SUM(bill_amount)'];
-                           
                           }else{
-                            $billsql = "SELECT SUM(bill_amount) FROM billing WHERE bill_user='{$_SESSION["id"]}'";
+                            $billsql = "SELECT SUM(bill_amount) FROM billing WHERE bill_admin='{$adminid}'";
                             $billresult = mysqli_query($connection, $billsql);
                             $ans = mysqli_fetch_assoc($billresult);
                             $sales=$ans['SUM(bill_amount)'];
@@ -145,30 +141,24 @@ include "../logics/conn.php";
 
                            <!-- Expense -->
                            <?php
-                          if ($_SESSION['admin']) {
-
-                            $expsql = "SELECT SUM(expense_amount) FROM expenses WHERE exp_user=16";
+                          if ($_SESSION['adminid']) {
+                            $expsql = "SELECT SUM(expense_amount) FROM expenses WHERE exp_admin='{$adminid}'";
                             $expresult = mysqli_query($connection, $expsql);
                             $eans = mysqli_fetch_assoc($expresult);
                             $esales=$eans['SUM(expense_amount)'];
-                           
                           }else{
-                            $expsql = "SELECT SUM(expense_amount) FROM expenses WHERE exp_user='{$_SESSION["id"]}'";
+                            $expsql = "SELECT SUM(expense_amount) FROM expenses WHERE exp_admin='{$adminid}'";
                             $expresult = mysqli_query($connection, $expsql);
                             $eans = mysqli_fetch_assoc($expresult);
-                            $esales=$eans['SUM(expense_amount)'];
-                      
+                            $esales=$eans['SUM(expense_amount)'];           
                           }
 
-
-                          
                           if($esales>100000){
                             $eval=$esales/100000;
                             echo ' <div>
                             <p class="statistics-title">Expense</p> 
                             <h3 class="rate-percentage">' . round($eval,2) .'Lakh </h3>
                             </div>';
-                            
                           }else{
                             $eval=$esales;
                             echo ' <div>
@@ -176,7 +166,6 @@ include "../logics/conn.php";
                             <h3 class="rate-percentage">' . round($eval,2) .'</h3>
                             </div>';
                           }
-
                           ?>
                           <!-- Expense -->
                           <div class="d-none d-md-block">
@@ -240,25 +229,18 @@ include "../logics/conn.php";
                                   <div class="d-sm-flex align-items-center mt-4 justify-content-between">
                                     <h2 class="me-2 fw-bold">PKR <span class="text-primary"> <!-- sales  -->
                                         <?php
-                                        if(isset($_SESSION['admin'])){
-
-                                          $billsql = "SELECT SUM(bill_amount) FROM billing WHERE bill_user=16";
+                                        if(isset($_SESSION['adminid'])){
+                                          $billsql = "SELECT SUM(bill_amount) FROM billing WHERE bill_admin='{$adminid}'";
                                           $billresult = mysqli_query($connection, $billsql);
                                           $ans = mysqli_fetch_assoc($billresult);
                                           $sales=$ans['SUM(bill_amount)'];
                                         }else{
-                                          $billsql = "SELECT SUM(bill_amount) FROM billing WHERE bill_user='{$_SESSION["id"]}'";
+                                          $billsql = "SELECT SUM(bill_amount) FROM billing WHERE bill_admin='{$_SESSION["id"]}'";
                                           $billresult = mysqli_query($connection, $billsql);
                                           $ans = mysqli_fetch_assoc($billresult);
                                           $sales=$ans['SUM(bill_amount)'];
                                         }
-
-                                           
-                                        
-                                          
                                           echo $sales;
-                                          
-                                        
                                         ?>
                                         <!-- sales  -->
                                       </span> /=</h2>

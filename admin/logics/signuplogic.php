@@ -3,6 +3,8 @@
 session_start();
 include("conn.php");
 
+
+
 if (isset($_POST['admin'])) {
     # create sub admin 
 $fullname=$_POST['user_fname'];

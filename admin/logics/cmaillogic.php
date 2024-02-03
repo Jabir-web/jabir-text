@@ -13,7 +13,7 @@ require '../PHPMailer/src/SMTP.php';
 $mail = new PHPMailer(true);
 session_start();
 if (isset($_POST['cmailbtn'])) {
-    $adminid=$_SESSION["id"];
+    $adminid=$_SESSION["adminid"];
     $rec=$_POST['email_rec'];
     $sub=$_POST['email_sub'];
     $msg=$_POST['email_msg'];

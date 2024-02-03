@@ -24,7 +24,7 @@
                 <?php
                 include("../logics/conn.php");
 
-                $queryusers = "SELECT * FROM users ORDER BY user_id DESC";
+                $queryusers = "SELECT * FROM users WHERE user_admin = '{$adminid}' ORDER BY user_id DESC";
 
                 $run = mysqli_query($connection, $queryusers);
                 $totalusers=mysqli_num_rows($run);
